@@ -12,8 +12,8 @@ contract SimpleStorageWithOwner {
     // Address of the contract owner
     address private owner;
 
-    // *Event to log updates, added based on the advice of a good person ;)
-    event NumberStored(address indexed user, uint256 newNumber);
+// Event to log updates, added based on the advice of a good person ;)
+event NumberStored(address indexed user, uint256 newNumber);
 
     /// @notice Set the contract deployer as the owner
     constructor() {
