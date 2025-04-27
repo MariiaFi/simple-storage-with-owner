@@ -12,6 +12,9 @@ contract SimpleStorageWithOwner {
     // Address of the contract owner
     address private owner;
 
+    // *Event to log updates, added based on the advice of a good person ;)
+    event NumberStored(address indexed user, uint256 newNumber);
+
     /// @notice Set the contract deployer as the owner
     constructor() {
         owner = msg.sender;
@@ -23,10 +26,11 @@ contract SimpleStorageWithOwner {
         _;
     }
 
-    /// @notice Allows the owner to store a new number
+    /// @notice Allows the owner to store a new number and emits an event
     /// @param newNumber The number to store
     function store(uint256 newNumber) public onlyOwner {
         storedNumber = newNumber;
+        emit NumberStored(msg.sender, newNumber); // 🛠 Emitting event based on smart advice
     }
 
     /// @notice Returns the currently stored number
